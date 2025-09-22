@@ -50,3 +50,56 @@ const locations = {
       alert("Place not found. Try typing exactly as in the list.");
     }
   }
+
+ window.onload = function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        const accuracy = position.coords.accuracy; // in meters
+
+        console.log(`User location: (${lat}, ${lon}), Accuracy: ${accuracy} meters`);
+
+        // Set map view to user's location
+        map.setView([lat, lon], 13);
+
+        // Add marker at user's location
+        L.marker([lat, lon])
+          .addTo(map)
+          .bindPopup(`You are here!<br>Accuracy: ${accuracy.toFixed(1)} meters`)
+          .openPopup();
+
+        // Draw a circle to show accuracy
+        L.circle([lat, lon], {
+          radius: accuracy,
+          color: 'blue',
+          fillColor: '#blue',
+          fillOpacity: 0.2
+        }).addTo(map);
+
+        // OPTIONAL: Store location in localStorage
+        localStorage.setItem("userLocation", JSON.stringify({ lat, lon, accuracy }));
+
+        // Send location to your server
+        fetch('/store-location', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lat, lon, accuracy })
+        });
+      },
+      function (error) {
+        console.error("Geolocation error:", error.message);
+        alert("Location access denied or unavailable.");
+        // You could optionally call a fallback IP-based location here
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+};

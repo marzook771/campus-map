@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Campus Finder</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body { margin:0; padding:0; font-family:sans-serif;}
+    #map { height: 90vh; }
+    #searchBar {
+      padding:10px;
+      background:#f0f0f0;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    input[type="text"] {
+      flex:1;
+      padding:6px 8px;
+      border:1px solid #ccc;
+      border-radius:4px;
+    }
+    button {
+      padding:6px 12px;
+      border:none;
+      background:#4caf50;
+      color:white;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    button:hover { background:#45a049; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Farook College Campus Finder</h1>
+    <p>Locate your Admission Office, Department, or Classroom</p>
+  </header>
+
+  
+
+  <main>
+    <div class="map-container">
+      
+
+      <div id="map"></div>
+    </div>
+
+    <aside class="locations">
+      <h2>Locations</h2>
+      <ul id="locationList">
+        <li onclick="gotoplace('alm hostel')">Alm Hostel</li>
+        <li onclick="gotoplace('auditorium')">Auditorium</li>
+        <li onclick="gotoplace('azad hostel')">Azad Hostel</li>
+        <li onclick="gotoplace('basket ball court')">Basket Ball</li>
+        <li onclick="gotoplace('botany block')">Botany Block</li>
+        <li onclick="gotoplace('cafeteria')">Cafteria</li>
+        <li onclick="gotoplace('chemistry block')">Chemistry Block</li>
+        <li onclick="gotoplace('commerce block')">Commerce Block</li>
+        <li onclick="gotoplace('computer science')">Computer Science</li>
+        <li onclick="gotoplace('indoor stadium')">Indoor Place</li>
+        <li onclick="gotoplace('library')">Library</li>
+        <li onclick="gotoplace('newblock')">Newblock</li>
+        <li onclick="gotoplace('north block')">North Block</li>
+        <li onclick="gotoplace('office')">Office</li>
+        <li onclick="gotoplace('parisons hall')">Parisons Hall</li>
+        <li onclick="gotoplace('physics block')">Physics Block</li>
+        <li onclick="gotoplace('play ground')">Play Ground</li>
+        <li onclick="gotoplace('pm institute of civil services examinations')">Pm Institute Of Civil Service Examinations</li>
+        <li onclick="gotoplace('tennis court')">Tennis Court</li>
+        <li onclick="gotoplace('western block')">Western Block</li>
+        <li onclick="gotoplace('zoology block')">Zoology Block</li>
+        <li onclick="gotoplace('iqbal hostel')">iqbal hostel</li>
+
+
+      </ul>
+    </aside>
+  </main>
+
+  <footer>© 2025 Your College Name</footer>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js">
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farook College Campus Finder – Dark Motion</title>
+<style>
+/* ---------- Base Reset ---------- */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Arial,sans-serif;
+  background: radial-gradient(circle at top,#0d1b2a 0%,#000814 100%);
+  color:#e0e6ed;
+  overflow-x:hidden;
+}
+
+/* ---------- Floating Neon Orbs ---------- */
+.orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.25;
+  animation:float 30s linear infinite;
+  z-index:-1;
+}
+.orb1{width:400px;height:400px;top:5%;left:-120px;background:#00b4d8;}
+.orb2{width:300px;height:300px;bottom:10%;right:-100px;background:#4caf50;}
+@keyframes float{
+  0%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-50px) rotate(180deg);}
+  100%{transform:translateY(0) rotate(360deg);}
+}
+
+/* ---------- Header ---------- */
+header{
+  text-align:center;
+  padding:70px 20px;
+  background:linear-gradient(135deg,#0d1b2a 0%,#1b263b 50%,#0d1b2a 100%);
+  background-size:300% 300%;
+  animation:gradientMove 15s ease infinite;
+  box-shadow:0 0 30px rgba(0,255,255,0.2);
+}
+header h1{font-size:2.8rem;color:#80ffdb;text-shadow:0 0 12px #80ffdb;}
+header p{margin-top:10px;font-size:1.2rem;color:#a9d6e5;}
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* ---------- Navigation ---------- */
+nav{
+  background:#1b263b;
+  text-align:center;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 15px rgba(0,0,0,0.6);
+}
+nav a{
+  color:#e0e6ed;
+  margin:0 20px;
+  text-decoration:none;
+  font-weight:600;
+  position:relative;
+  transition:color .3s;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-5px;
+  width:100%;height:2px;
+  background:#80ffdb;
+  transform:scaleX(0);
+  transition:transform .3s;
+  transform-origin:right;
+}
+nav a:hover{
+  color:#80ffdb;
+}
+nav a:hover::after{
+  transform:scaleX(1);
+  transform-origin:left;
+}
+
+/* ---------- Layout ---------- */
+.container{
+  max-width:1000px;
+  margin:40px auto;
+  padding:20px;
+}
+section{
+  margin-bottom:70px;
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 0.9s ease;
+}
+section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+h2{
+  color:#80ffdb;
+  font-size:1.9rem;
+  margin-bottom:15px;
+  text-shadow:0 0 8px #00b4d8;
+}
+
+/* ---------- Text Lists ---------- */
+ul,ol{margin-left:20px;}
+ul li, ol li{
+  margin:10px 0;
+  opacity:0;
+  transform:translateX(-20px);
+  transition:all 0.6s ease;
+}
+li.show{opacity:1;transform:translateX(0);}
+
+/* ---------- Buttons & Select ---------- */
+label{display:block;margin:15px 0 6px;font-weight:bold;color:#a9d6e5;}
+select{
+  width:100%;
+  max-width:300px;
+  padding:10px;
+  border-radius:8px;
+  border:2px solid #80ffdb;
+  background:#1b263b;
+  color:#e0e6ed;
+  font-size:1rem;
+  transition:box-shadow .3s;
+}
+select:focus{box-shadow:0 0 10px #80ffdb;outline:none;}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  background:#00b4d8;
+  color:#000814;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  transition:transform .3s, box-shadow .3s;
+}
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 15px #00b4d8;
+}
+
+/* ---------- Footer ---------- */
+footer{
+  background:#1b263b;
+  text-align:center;
+  padding:25px;
+  color:#a9d6e5;
+  box-shadow:0 -2px 20px rgba(0,0,0,0.5);
+}
+header {
+  padding: 40px 20px;
+  background: linear-gradient(135deg,#0d1b2a 0%,#1b263b 50%,#0d1b2a 100%);
+  animation: gradientMove 15s ease infinite;
+  box-shadow: 0 0 30px rgba(0,255,255,0.2);
+  text-align: left; /* override center */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;       /* vertical centering */
+  gap: 20px;                 /* space between logo and text */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header .logo {
+  width: 100px;
+  height: auto;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  color: #80ffdb;
+  text-shadow: 0 0 12px #80ffdb;
+  margin: 0;
+}
+
+header p {
+  margin-top: 6px;
+  font-size: 1.2rem;
+  color: #a9d6e5;
+}
+
+
+</style>
+</head>
+<body>
+    
+
+<!-- Floating Orbs -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<header>
+  <img src="frr.jpg" alt="Farook College logo" class="logo">
+  <h1>ഫാറൂഖ് കോളേജ് ക്യാമ്പസ് മാർഗ്ഗദർശി
+</h1>
+ 
+</header>
+
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#howto">How to Use</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="container" id="home">
+  <section>
+    <h2>About the Campus Finder</h2>
+    <p>
+      The <strong>Farook College Campus Finder</strong> helps students, staff and visitors locate any department, office or facility on an interactive map—fast and easy.
+    </p>
+
+    <label for="locationSelect">Quick Location Select:</label>
+    <select id="locationSelect">
+      <option value="">-- Choose a location --</option>
+      <option value="admissions">Admissions Office</option>
+      <option value="science-block">Science Block</option>
+      <option value="library">Central Library</option>
+      <option value="boys-hostel">Boys’ Hostel</option>
+      <option value="girls-hostel">Girls’ Hostel</option>
+    </select>
+
+    <a href="campus-map.html" class="btn" id="mapBtn">Go to Campus Map</a>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <ul>
+      <li>Leaflet.js interactive map with smooth fly-to animation</li>
+      <li>Powerful building name search</li>
+      <li>Clickable list with instant zoom</li>
+      <li>Dark mode for night-time viewing</li>
+      <li>Quick dropdown location selector</li>
+    </ul>
+  </section>
+
+  <section id="howto">
+    <h2>How to Use</h2>
+    <ol>
+      <li>Select a location or click “Go to Campus Map.”</li>
+      <li>Use the map search or sidebar list to find places.</li>
+      <li>The map zooms to the selected building.</li>
+      <li>Tap a marker for building details.</li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <h2>Contact & Support</h2>
+    <p>Email: <strong>
+mail@farookcollege.ac.in</strong></p>
+    <p>Phone: <strong>
++91 495 2440660<br>
++91 495 2440661
+</strong></p>
+  </section>
+</div>
+
+<footer>
+  &copy; 2025 Farook College. All rights reserved.
+</footer>
+
+<script>
+// Reveal sections and list items on scroll
+const sections = document.querySelectorAll('section');
+const listItems = document.querySelectorAll('li');
+function reveal(){
+  const trigger = window.innerHeight * 0.85;
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top<trigger) sec.classList.add('visible');
+  });
+  listItems.forEach(li=>{
+    if(li.getBoundingClientRect().top<trigger) li.classList.add('show');
+  });
+}
+window.addEventListener('scroll',reveal);
+reveal();
+
+// Pass selected location to map page
+document.getElementById('mapBtn').addEventListener('click', function(e){
+  const loc=document.getElementById('locationSelect').value;
+  if(loc){
+    this.href=`campus-map.html?place=${encodeURIComponent(loc)}`;
+  }
+});
+</script>
+</body>
+</html>
